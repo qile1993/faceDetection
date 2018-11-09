@@ -8,7 +8,7 @@
     <title>面部识别&活体检测</title>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if IE]><script src="js/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?041da31f422e098708eb" rel="stylesheet"></head>
+<link href="faceDetection.css?c28f6fd51e3ce74aca30" rel="stylesheet"></head>
 
 <body>
     <div id="INTELLIGENT_DETECTION">
@@ -20,7 +20,7 @@
             <i class="iconfont icon-zs zs"></i>
             <i class="iconfont icon-yx yx"></i>
             <i class="iconfont icon-ys ys"></i>
-            <div id="mask"></div>
+            <!-- <div id="mask"></div> -->
         </div>
         <!-- 信息提示区 -->
         <div id="prompt_msg"></div>
@@ -32,28 +32,8 @@
         <!-- 按钮区 -->
         <div class="row" id="btns_dom"></div>
     </div>
-<script type="text/javascript" src="faceDetection.js?041da31f422e098708eb"></script></body>
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-<!-- <script type="text/javascript" src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script> -->
+<script type="text/javascript" src="faceDetection.js?c28f6fd51e3ce74aca30"></script></body>
 <script type="text/javascript">
-let callBackObj;
-function ajax(targetBase) {
-    $.ajax({
-        url: 'http://ec-gpaas-live-detection.testyf.ak/api/v1/live_detection',
-        type: "post",
-        data: {
-            merchantId: 8,
-            images: JSON.stringify(["iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAIVBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAt9G3DAAAACnRSTlMAgOPDQikOYJy00u5XMQAABStJREFUeNrtXYu2oyAMlGeC///Bu91791St1EQSUE/mA7QjAySTQKfJYDAYDAaDwWAwGAwGg8FgMNwRGcIsCoxDeEQ/i6Ok/jzcrILugwLz/AgmSYvH7PMThPWC60rE6xHxXVesWRHxGcrqq623spwYRmjrrawg99AwQFvvrwcaO5MboCzBkCL319ZbWUXysf21hRrKWmoLuytLNJzori0lZU1T6awt1HpfVNNWTil+4q0s6U/01tbOa1M6J+QM5TA11RvrWgYZuWQy+gHRHSUWdRwq2fkxKRApOwDyexMt20DNdeQbAjGeoNojUXNl/64F0qvJtoJCcp0Fky+yrVAmBRTq2w/VlcnZOGgQIcvhcKUhf5JZxRSk20zImW3BQaxCKZCrAlxgfEg/2Ig9GK8llUAdEJguCCAOiRPeJRI4h+UvEB0kYSZAs3naOeBH+SRgOxukaEssR4v1mNM3lnMyJYuIIhPkMOT0riUocIRJAgKbRCIFfnj+BZEwjaE590vkDfX84k6QjWucIpllbhMEFgE+Vzt/vCA1EuGWRw+i8Qy/z/PrVEqdyIlaw7dBWX6WFWVlImm/6O7DC96zkz2oxtq6RPZkFdzCwUnR7W0uNXmlerCtSuQzjyh7HsFes8Tu2pNDvbSoSWQ7PXxtZcw7+4yjJe+pAxFHpFHZMh3JTkF9IsAtZm4XBqAYXF6dCJwwncB/ZzKCSDrlaKbveeveUq1MZGW7eEbUjN9MkZ1NKSgTQbYDuCtJHD3Zl7/Gp4bNB47CHVAlshIWOzCPVXF9+oQ+Z00i2GRq51gVF9QDAA0iqdU+qts7pTLVdYiEZk+71By3dZFmKTwFIqm9fLWcDKkqW1ROrIqAnxfrg/o/Ndis6vJEkkgZDr8seymCi/o5uxOpi2auvSlPRMhg5fbOiROJQgbrYkjiECIo5Xg73lSTJpLFup2Y3rk0kSRX3+X1zkkTcXI1IV5fpjSRINc5kFmDK01Esvc3cMoAwkSyZJsuckZXmEiUmyLMhwkTkahu7ayA0J2IE+1s5OhUmAiK9vl7xt5+aSJhHJEi2rfFeZoWEZHWRrwAkceMyN2JPGayP4bIYzZEkOz/HRmiPCZoFA3j3cAwfpJsyR6ZWC2M35unuoLmQxxqPiS5gySFlaSJO42zgkGXRxAROyA62DJ9jom9KCuAzIAMKissfkGQGZBRhZ4sck8DcjsOdIuhpxeuyC5E6panQ7uwqE6fcsPASXEV/rfQbuE45ZzCiQdoN9X41DRB6IGOepsTn8my34ReqtdpPIsNjWervhl6CH25VsBVFzojgu7RnMlJTeLZs/F92mWpX3ZzZoYjyks1MG/afllB54VayrdHmHjB82Wa/Lf95Nyg4BLHLhYnp04HN30Pwvjdk4Z7l62wPZjuR5M8wvJymZxcOHsPRUci9cNiBV8nqINvuhmkIxHmacoGR+x2ByrHEZE/4jqKSJ9Dx12IdDgG3ouI+sH8fkQm1asS+hKZ9C6v6E7kh010iBjKa1MEqftiRhBRgRExIkbEiDyOSNS88U8KmWC+iHb8aAEIP1KwmUEPSLEnVW7tlkUiFbNR9zpJiRkSSKqJ88WZ5EI0WhdpRMmXHo+DSsTKMXQXmyjrLPrAaQ2bTMhdBps87WjPVv1nEUkc7nRwDx4EC9/dgQdlTc03YEJcUeEBuvpd5/yVaXAuKPoo891xOH5nivRf68kgnHFb079K02XwujP4sjG5wWAwGAwGg8FgMBgMBoPBYDAYDIYb4Q/zCikjjVF/2AAAAABJRU5ErkJggg=="]),
-            userId: '123'
-        },
-        success: function(data) {
-            console.log(data)
-            if(data.code == "300"){
-                console.log(callBackObj)
-            }
-        }
-    });
-}
 openSDK.faceDetection({}, function(backObj) {
     let curModel = 2; //curModel:0>面部识别;curModel:1>活体检测;curModel:2>拍照
     let cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮
@@ -69,7 +49,6 @@ openSDK.faceDetection({}, function(backObj) {
     //拍摄
     shotBtn.onclick = function() {
         backObj.shotModel(function(callPic) {
-            // ajax(callPic)
             backObj.resultModel(true, '拍摄成功');
         })
     }

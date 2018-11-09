@@ -79,14 +79,18 @@
                     var source, el, cam;
 
                     source = '<!--[if IE]>'+
-                    '<object id="XwebcamXobjectX" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="' + options.width + '" height="' + options.height + '">'+
+                    '<object id="XwebcamXobjectX" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="' + options.width + '" height="' + options.height + '">'+
                     '<param name="movie" value="' + options.swffile + '" />'+
+                    '<param name="allowScriptAccess" value="sameDomain" />'+
                     '<![endif]-->'+
                     '<!--[if !IE]>-->'+
                     '<object id="XwebcamXobjectX" type="application/x-shockwave-flash" data="' + options.swffile + '" width="' + options.width + '" height="' + options.height + '">'+
                     '<!--<![endif]-->'+
                     '<param name="FlashVars" value="mode=' + options.mode + '&amp;quality=' + options.quality + '" />'+
                     '<param name="allowScriptAccess" value="always" />'+
+                    '<embed style="z-index: 100" allowscriptaccess="sameDomain" width="' + options.width + '" height="' + options.height + '"'+
+                    'pluginspage="http://www.macromedia.com/go/getflashplayer" quality="' + options.quality + '"  wmode="transparent"'+
+                    'src="' + options.swffile + '" type="application/x-shockwave-flash" width="500"></embed>'+
                     '</object>';
                     el = document.getElementById(options.el);
                     el.innerHTML = source;
