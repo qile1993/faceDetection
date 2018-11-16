@@ -1,40 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>面部识别&活体检测</title>
+    <meta name="author" content="Addy Osmani"/>
+    <title>面部识别活体检测</title>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if IE]><script src="js/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?a9c425ef411d028d366f" rel="stylesheet"></head>
+<link href="faceDetection.css?abf1948251ad39eb7b94" rel="stylesheet"></head>
 
 <body>
-    <div id="INTELLIGENT_DETECTION">
-        <!-- 拍摄区 -->
-        <div id="shot_area" class="default">
-            <div id="webcam"></div>
-            <canvas id="canvas" class="hide"></canvas>
-            <i class="iconfont icon-zx zx"></i>
-            <i class="iconfont icon-zs zs"></i>
-            <i class="iconfont icon-yx yx"></i>
-            <i class="iconfont icon-ys ys"></i>
-            <!-- <div id="mask"></div> -->
-        </div>
-        <!-- 信息提示区 -->
-        <div id="prompt_msg"></div>
-        <!-- 示例图区 -->
-        <div id="example_pic" class="hide">
-            <img src="./static/img/example.jpg">
-            <i>*&nbsp;请保持拍摄环境光线充足！</i>
-        </div>
-        <!-- 按钮区 -->
-        <div class="row" id="btns_dom"></div>
-    </div>
-<script type="text/javascript" src="faceDetection.js?a9c425ef411d028d366f"></script></body>
+    <div id="INTELLIGENT_DETECTION"></div>
+<script type="text/javascript" src="faceDetection.js?abf1948251ad39eb7b94"></script></body>
 <script type="text/javascript">
-openSDK.faceDetection({}, function(backObj) {
+openSDK.faceDetection({
+    faceRecognit: true
+}, function(backObj) {
     let curModel = 2; //curModel:0>面部识别;curModel:1>活体检测;curModel:2>拍照
     let cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮
     let shotBtn = document.getElementById('FaceShotBtn'); //拍摄按钮
@@ -49,13 +30,13 @@ openSDK.faceDetection({}, function(backObj) {
     //拍摄
     shotBtn.onclick = function() {
         backObj.shotModel(function(callPic) {
-            backObj.resultModel(true, '拍摄成功');
+            //backObj.resultModel(true, '拍摄成功');
         })
     }
     //重试
     retryBtn.onclick = function() {
         backObj.retryModel(0, function(callPic) {
-            backObj.resultModel(true, '拍摄成功');
+            //backObj.resultModel(true, '重试成功');
         })
     }
     //下一步
@@ -65,7 +46,6 @@ openSDK.faceDetection({}, function(backObj) {
     //人脸识别
     distinguishBtn.onclick = function() {
         backObj.distinguishModel(function(callPic) {
-            console.log(callPic)
             backObj.resultModel(false, '识别失败');
             // backObj.resultModel(true, '识别成功',false);
         })
@@ -73,7 +53,6 @@ openSDK.faceDetection({}, function(backObj) {
     //活体检测
     checkBtn.onclick = function() {
         backObj.checkModel(function(callPic) {
-            console.log(callPic)
             // backObj.resultModel(false, '检测失败');
             // backObj.resultModel(true, '检测成功');
         })
