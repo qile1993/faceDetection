@@ -8,23 +8,23 @@
     <title>面部识别活体检测</title>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if IE]><script src="js/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?05d93aa8d4204cea4deb" rel="stylesheet"></head>
+<link href="faceDetection.css?098a9f109eec7223d174" rel="stylesheet"></head>
 
 <body>
     <div id="INTELLIGENT_DETECTION"></div>
-<script type="text/javascript" src="faceDetection.js?05d93aa8d4204cea4deb"></script></body>
+<script type="text/javascript" src="faceDetection.js?098a9f109eec7223d174"></script></body>
 <script type="text/javascript">
 openSDK.faceDetection({
     faceRecognit: true
 }, function(backObj) {
-    let curModel = 2; //curModel:0>面部识别;curModel:1>活体检测;curModel:2>拍照;
-    let cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮;
-    let shotBtn = document.getElementById('FaceShotBtn'); //拍摄按钮;
-    let checkBtn = document.getElementById('FaceCheckBtn'); //检测按钮;
-    let distinguishBtn = document.getElementById('FaceDistinguishBtn'); //识别按钮;
-    let retryBtn = document.getElementById('FaceRetryBtn'); //重试按钮;
-    let nextBtn = document.getElementById('FaceNextBtn'); //下一步按钮;
-    let completeBtn = document.getElementById('FaceCompleteBtn'); //完成按钮;
+    var curModel = 2; //curModel:0>面部识别;curModel:1>活体检测;curModel:2>拍照;
+    var cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮;
+    var shotBtn = document.getElementById('FaceShotBtn'); //拍摄按钮;
+    var checkBtn = document.getElementById('FaceCheckBtn'); //检测按钮;
+    var distinguishBtn = document.getElementById('FaceDistinguishBtn'); //识别按钮;
+    var retryBtn = document.getElementById('FaceRetryBtn'); //重试按钮;
+    var nextBtn = document.getElementById('FaceNextBtn'); //下一步按钮;
+    var completeBtn = document.getElementById('FaceCompleteBtn'); //完成按钮;
     callBackObj = backObj;
     //提示框信息
     backObj.promptMsgModel(0, '保持人在拍摄框内，且只有一个人');
