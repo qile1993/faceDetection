@@ -7,16 +7,15 @@
     <title>面部识别活体检测</title>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if IE]><script src="js/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?b97e77392bdae785fe9f" rel="stylesheet"></head>
+<link href="faceDetection.css?9c1a0064384490003d2d" rel="stylesheet"></head>
 
 <body>
     <div id="INTELLIGENT_DETECTION"></div>
-<script type="text/javascript" src="faceDetection.js?b97e77392bdae785fe9f"></script></body>
+<script type="text/javascript" src="faceDetection.js?9c1a0064384490003d2d"></script></body>
 <script type="text/javascript">
 openSDK.faceDetection({
     faceRecognit: true
 }, function(backObj) {
-    let curModel = 2; //curModel:0>面部识别;curModel:1>活体检测;curModel:2>拍照
     let cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮
     let shotBtn = document.getElementById('FaceShotBtn'); //拍摄按钮
     let checkBtn = document.getElementById('FaceCheckBtn'); //检测按钮
@@ -46,6 +45,7 @@ openSDK.faceDetection({
     //人脸识别
     distinguishBtn.onclick = function() {
         backObj.distinguishModel(function(callPic) {
+            console.log(callPic)
             backObj.resultModel(false, '识别失败');
             // backObj.resultModel(true, '识别成功',false);
         })
