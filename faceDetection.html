@@ -8,14 +8,14 @@
     <title>面部识别活体检测</title>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if IE]><script src="js/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?3a25d347787bb2736154" rel="stylesheet"></head>
+<link href="faceDetection.css?356b5b4ab54d57925011" rel="stylesheet"></head>
 
 <body>
     <div id="INTELLIGENT_DETECTION"></div>
-<script type="text/javascript" src="faceDetection.js?3a25d347787bb2736154"></script></body>
+<script type="text/javascript" src="faceDetection.js?356b5b4ab54d57925011"></script></body>
 <script type="text/javascript">
 openSDK.faceDetection({
-    faceRecognit: true
+    livingDetection: true
 }, function(backObj) {
     var curModel = 2; //curModel:0>面部识别;curModel:1>活体检测;curModel:2>拍照;
     var cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮;
@@ -47,7 +47,6 @@ openSDK.faceDetection({
     //人脸识别
     distinguishBtn.onclick = function() {
         backObj.distinguishModel(function(callPic) {
-            console.log(callPic)
             backObj.resultModel(false, '识别失败');
             // backObj.resultModel(true, '识别成功',false);
         })
@@ -55,6 +54,7 @@ openSDK.faceDetection({
     //活体检测
     checkBtn.onclick = function() {
         backObj.checkModel(function(callPic) {
+            console.log(callPic)
             // backObj.resultModel(false, '检测失败');
             // backObj.resultModel(true, '检测成功');
         })
