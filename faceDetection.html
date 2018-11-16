@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Addy Osmani"/>
+    <meta name="author" content="Addy Osmani" />
     <title>面部识别活体检测</title>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if IE]><script src="js/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?9c1a0064384490003d2d" rel="stylesheet"></head>
+<link href="faceDetection.css?05d93aa8d4204cea4deb" rel="stylesheet"></head>
 
 <body>
     <div id="INTELLIGENT_DETECTION"></div>
-<script type="text/javascript" src="faceDetection.js?9c1a0064384490003d2d"></script></body>
+<script type="text/javascript" src="faceDetection.js?05d93aa8d4204cea4deb"></script></body>
 <script type="text/javascript">
 openSDK.faceDetection({
     faceRecognit: true
 }, function(backObj) {
-    let cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮
-    let shotBtn = document.getElementById('FaceShotBtn'); //拍摄按钮
-    let checkBtn = document.getElementById('FaceCheckBtn'); //检测按钮
-    let distinguishBtn = document.getElementById('FaceDistinguishBtn'); //识别按钮
-    let retryBtn = document.getElementById('FaceRetryBtn'); //重试按钮
-    let nextBtn = document.getElementById('FaceNextBtn'); //下一步按钮
-    let completeBtn = document.getElementById('FaceCompleteBtn'); //完成按钮
+    let curModel = 2; //curModel:0>面部识别;curModel:1>活体检测;curModel:2>拍照;
+    let cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮;
+    let shotBtn = document.getElementById('FaceShotBtn'); //拍摄按钮;
+    let checkBtn = document.getElementById('FaceCheckBtn'); //检测按钮;
+    let distinguishBtn = document.getElementById('FaceDistinguishBtn'); //识别按钮;
+    let retryBtn = document.getElementById('FaceRetryBtn'); //重试按钮;
+    let nextBtn = document.getElementById('FaceNextBtn'); //下一步按钮;
+    let completeBtn = document.getElementById('FaceCompleteBtn'); //完成按钮;
     callBackObj = backObj;
     //提示框信息
     backObj.promptMsgModel(0, '保持人在拍摄框内，且只有一个人');
@@ -31,17 +33,17 @@ openSDK.faceDetection({
         backObj.shotModel(function(callPic) {
             //backObj.resultModel(true, '拍摄成功');
         })
-    }
+    };
     //重试
     retryBtn.onclick = function() {
         backObj.retryModel(0, function(callPic) {
             //backObj.resultModel(true, '重试成功');
         })
-    }
+    };
     //下一步
     nextBtn.onclick = function() {
         backObj.nextModel(1)
-    }
+    };
     //人脸识别
     distinguishBtn.onclick = function() {
         backObj.distinguishModel(function(callPic) {
@@ -49,21 +51,21 @@ openSDK.faceDetection({
             backObj.resultModel(false, '识别失败');
             // backObj.resultModel(true, '识别成功',false);
         })
-    }
+    };
     //活体检测
     checkBtn.onclick = function() {
         backObj.checkModel(function(callPic) {
             // backObj.resultModel(false, '检测失败');
             // backObj.resultModel(true, '检测成功');
         })
-    }
+    };
     //完成
     completeBtn.onclick = function() {
         backObj.completeModel(function() {
             console.log('完成了')
         })
-    }
-})
+    };
+});
 </script>
 
 </html>
