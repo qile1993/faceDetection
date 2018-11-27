@@ -7,7 +7,6 @@
 
 
 var App = {
-
     init: function() {
 
         // The shim requires options to be supplied for it's configuration,
@@ -38,7 +37,6 @@ var App = {
             alert('No options were supplied to the shim!');
         }
     },
-
     addEvent: function(type, obj, fn) {
         if (obj.attachEvent) {
             obj['e' + type + fn] = fn;
@@ -90,7 +88,6 @@ var App = {
         },
         onLoad: function() {}
     },
-
     success: function(stream) {
         if (App.options.context === 'webrtc') {
             var video = App.options.videoEl;
@@ -138,10 +135,8 @@ var App = {
         }
     }
 };
-
 App.init();
 var snapshotBtn = document.getElementById('takeSnapshot');
 snapshotBtn.onclick = function() {
-	console.log(777)
-    APP.getSnapshot()
+    App.getSnapshot()
 };
