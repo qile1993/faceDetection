@@ -298,83 +298,84 @@ let options = {
     onLoad: function() {}
 };
 var APP = {
-        //初始化
-        init: function() {
-            if (!!options) {
-                this.pos = 0;
-                this.cam = null;
-                this.filter_on = false;
-                this.filter_id = 0;
-                this.canvas = document.getElementById("canvas");
-                this.ctx = this.canvas.getContext("2d");
-                this.img = new Image();
-                this.ctx.clearRect(0, 0, options.width, options.height);
-                this.image = this.ctx.getImageData(0, 0, options.width, options.height);
-                // 初始化摄像头
-                getUserMedia(options, this.success, this.deviceError);
-                window.webcam = options;
-            } else {
-                alert('No options were supplied to the shim!');
-            }
-        },
-        //添加事件
-        addEvent: function(type, obj, fn) {
-            if (obj.attachEvent) {
-                obj['e' + type + fn] = fn;
-                obj[type + fn] = function() {
-                    obj['e' + type + fn](window.event);
-                }
-                obj.attachEvent('on' + type, obj[type + fn]);
-            } else {
-                obj.addEventListener(type, fn, false);
-            }
-        },
-        //初始化摄像头成功回调
-        success: function(stream) {
-            if (options.context === 'webrtc') {
-                var video = options.videoEl;
-                if ((typeof MediaStream !== "undefined" && MediaStream !== null) && stream instanceof MediaStream) {
-                    if (video.mozSrcObject !== undefined) { //FF18a
-                        video.mozSrcObject = stream;
-                    } else { //FF16a, 17a
-                        video.srcObject = stream;
-                    }
-                    return video.play();
-                } else {
-                    var vendorURL = window.URL || window.webkitURL;
-                    video.src = vendorURL ? vendorURL.createObjectURL(stream) : stream;
-                }
-                video.onerror = function() {
-                    stream.stop();
-                    streamError();
-                };
-            } else {
-                // flash context
-            }
-        },
-        //初始化摄像头失败回调
-        deviceError: function(error) {
-            openCamera = false;
-            // console.log('No camera available.');
-        },
-        changeFilter: function() {
-            if (this.filter_on) {
-                this.filter_id = (this.filter_id + 1) & 7;
-            }
-        },
-        //获取视频快照
-        getSnapshot: function() {
-            if (options.context === 'webrtc') {
-                var video = document.getElementsByTagName('video')[0];
-                this.canvas.width = video.videoWidth;
-                this.canvas.height = video.videoHeight;
-                this.canvas.getContext('2d').drawImage(video, 0, 0);
-            } else if (options.context === 'flash') {
-                window.webcam.capture();
-                this.changeFilter();
-            } else {
-                alert('No context was supplied to getSnapshot()');
-            }
+    options: options,
+    //初始化
+    init: function() {
+        if (!!options) {
+            this.pos = 0;
+            this.cam = null;
+            this.filter_on = false;
+            this.filter_id = 0;
+            this.canvas = document.getElementById("canvas");
+            this.ctx = this.canvas.getContext("2d");
+            this.img = new Image();
+            this.ctx.clearRect(0, 0, options.width, options.height);
+            this.image = this.ctx.getImageData(0, 0, options.width, options.height);
+            // 初始化摄像头
+            getUserMedia(options, this.success, this.deviceError);
+            window.webcam = options;
+        } else {
+            alert('No options were supplied to the shim!');
         }
-    };
-    APP.init();
+    },
+    //添加事件
+    addEvent: function(type, obj, fn) {
+        if (obj.attachEvent) {
+            obj['e' + type + fn] = fn;
+            obj[type + fn] = function() {
+                obj['e' + type + fn](window.event);
+            }
+            obj.attachEvent('on' + type, obj[type + fn]);
+        } else {
+            obj.addEventListener(type, fn, false);
+        }
+    },
+    //初始化摄像头成功回调
+    success: function(stream) {
+        if (options.context === 'webrtc') {
+            var video = options.videoEl;
+            if ((typeof MediaStream !== "undefined" && MediaStream !== null) && stream instanceof MediaStream) {
+                if (video.mozSrcObject !== undefined) { //FF18a
+                    video.mozSrcObject = stream;
+                } else { //FF16a, 17a
+                    video.srcObject = stream;
+                }
+                return video.play();
+            } else {
+                var vendorURL = window.URL || window.webkitURL;
+                video.src = vendorURL ? vendorURL.createObjectURL(stream) : stream;
+            }
+            video.onerror = function() {
+                stream.stop();
+                streamError();
+            };
+        } else {
+            // flash context
+        }
+    },
+    //初始化摄像头失败回调
+    deviceError: function(error) {
+        openCamera = false;
+        // console.log('No camera available.');
+    },
+    changeFilter: function() {
+        if (this.filter_on) {
+            this.filter_id = (this.filter_id + 1) & 7;
+        }
+    },
+    //获取视频快照
+    getSnapshot: function() {
+        if (options.context === 'webrtc') {
+            var video = document.getElementsByTagName('video')[0];
+            this.canvas.width = video.videoWidth;
+            this.canvas.height = video.videoHeight;
+            this.canvas.getContext('2d').drawImage(video, 0, 0);
+        } else if (options.context === 'flash') {
+            window.webcam.capture();
+            this.changeFilter();
+        } else {
+            alert('No context was supplied to getSnapshot()');
+        }
+    }
+};
+APP.init();
