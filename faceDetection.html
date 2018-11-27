@@ -8,12 +8,11 @@
     <title>面部识别活体检测</title>
     <!--[if IE]><script src="https://fedcdn.open.com.cn/fedcdn/Face/html5.js"></script><![endif]-->
     <!--[if IE]><script src="https://fedcdn.open.com.cn/fedcdn/Face/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?54ff1a9dcad81546a1a8" rel="stylesheet"></head>
+<link href="faceDetection.css?c2146e4beeb87c6ab4b4" rel="stylesheet"></head>
 
 <body>
     <div id="INTELLIGENT_DETECTION"></div>
-    <img id="img" src="" style="border: 1px solid #f00;">
-<script type="text/javascript" src="faceDetection.js?54ff1a9dcad81546a1a8"></script></body>
+<script type="text/javascript" src="faceDetection.js?c2146e4beeb87c6ab4b4"></script></body>
     <script type="text/javascript">
     openSDK.faceDetection({
         faceRecognit: true
@@ -38,9 +37,8 @@
         //重试
         retryBtn.onclick = function() {
             backObj.retryModel(0, function(callPic) {
-                var img = document.getElementById('img');
-                img.setAttribute('src', callPic);
-                backObj.resultModel(false, '重试失败');
+                console.log(callPic);
+                backObj.resultModel(true, '重试成功');
             })
         };
         //下一步
@@ -50,10 +48,9 @@
         //人脸识别
         distinguishBtn.onclick = function() {
             backObj.distinguishModel(function(callPic) {
-                var img = document.getElementById('img');
-                img.setAttribute('src', callPic);
-                backObj.resultModel(false, '识别失败');
-                // backObj.resultModel(true, '识别成功',false);
+                console.log(callPic);
+                // backObj.resultModel(true, '识别失败');
+                backObj.resultModel(true, '识别成功',false);
             })
         };
         //活体检测
