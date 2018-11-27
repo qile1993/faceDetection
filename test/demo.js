@@ -125,21 +125,12 @@ var App = {
         }
     },
     getSnapshot: function() {
-        // If the current context is WebRTC/getUserMedia (something
-        // passed back from the shim to avoid doing further feature
-        // detection), we handle getting video/images for our canvas 
-        // from our HTML5 <video> element.
         if (App.options.context === 'webrtc') {
             var video = document.getElementsByTagName('video')[0];
             App.canvas.width = video.videoWidth;
             App.canvas.height = video.videoHeight;
             App.canvas.getContext('2d').drawImage(video, 0, 0);
-
-            // Otherwise, if the context is Flash, we ask the shim to
-            // directly call window.webcam, where our shim is located
-            // and ask it to capture for us.
         } else if (App.options.context === 'flash') {
-
             window.webcam.capture();
             App.changeFilter();
         } else {
@@ -151,5 +142,6 @@ var App = {
 App.init();
 var snapshotBtn = document.getElementById('takeSnapshot');
 snapshotBtn.onclick = function() {
+	console.log(777)
     APP.getSnapshot()
 };
