@@ -8,14 +8,16 @@
     <title>面部识别活体检测</title>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if IE]><script src="js/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?356b5b4ab54d57925011" rel="stylesheet"></head>
+<link href="faceDetection.css?c6bf11daa5aa6a08dc50" rel="stylesheet"></head>
 
 <body>
     <div id="INTELLIGENT_DETECTION"></div>
-<script type="text/javascript" src="faceDetection.js?356b5b4ab54d57925011"></script></body>
+    <img class="img" src="">
+<script type="text/javascript" src="faceDetection.js?c6bf11daa5aa6a08dc50"></script></body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
 openSDK.faceDetection({
-    livingDetection: true
+    faceRecognit: true
 }, function(backObj) {
     var curModel = 2; //curModel:0>面部识别;curModel:1>活体检测;curModel:2>拍照;
     var cancelBtn = document.getElementById('FaceCancelBtn'); //取消按钮;
@@ -36,17 +38,19 @@ openSDK.faceDetection({
     };
     //重试
     retryBtn.onclick = function() {
-        backObj.retryModel(0, function(callPic) {
-            //backObj.resultModel(true, '重试成功');
+        backObj.retryModel(1, function(callPic) {
+            // console.log(callPic)
+            backObj.resultModel(false, '重试失败');
         })
     };
     //下一步
     nextBtn.onclick = function() {
-        backObj.nextModel(1)
+        backObj.nextModel(2)
     };
     //人脸识别
     distinguishBtn.onclick = function() {
         backObj.distinguishModel(function(callPic) {
+            $('.img').attr('src',callPic);
             backObj.resultModel(false, '识别失败');
             // backObj.resultModel(true, '识别成功',false);
         })
@@ -55,7 +59,7 @@ openSDK.faceDetection({
     checkBtn.onclick = function() {
         backObj.checkModel(function(callPic) {
             console.log(callPic)
-            // backObj.resultModel(false, '检测失败');
+            backObj.resultModel(false, '检测失败');
             // backObj.resultModel(true, '检测成功');
         })
     };
