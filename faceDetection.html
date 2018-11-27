@@ -8,12 +8,30 @@
     <title>面部识别活体检测</title>
     <!--[if IE]><script src="https://fedcdn.open.com.cn/fedcdn/Face/html5.js"></script><![endif]-->
     <!--[if IE]><script src="https://fedcdn.open.com.cn/fedcdn/Face/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?efbc4a0f16e71f304de8" rel="stylesheet"></head>
+<link href="faceDetection.css?9057975b4041f1120d3a" rel="stylesheet"></head>
 
 <body>
-    <div id="INTELLIGENT_DETECTION"></div>
+    <div id="INTELLIGENT_DETECTION">
+        <!-- 拍摄区 -->
+        <div id="shot_area" class="default">
+            <div id="webcam"></div>
+            <canvas id="canvas"></canvas>
+            <i class="iconfont icon-zx zx"></i>
+            <i class="iconfont icon-zs zs"></i>
+            <i class="iconfont icon-yx yx"></i>
+            <i class="iconfont icon-ys ys"></i>
+        </div>
+        <!-- 信息提示区 -->
+        <div id="prompt_msg"></div>
+        <!-- 示例图区 -->
+        <div id="example_pic" class="hide">
+            
+        </div>
+        <!-- 按钮区 -->
+        <div class="row" id="btns_dom"></div>
+    </div>
     <img id="img" src="" style="border: 1px solid #f00">
-<script type="text/javascript" src="faceDetection.js?efbc4a0f16e71f304de8"></script></body>
+<script type="text/javascript" src="faceDetection.js?9057975b4041f1120d3a"></script></body>
     <script type="text/javascript">
     openSDK.faceDetection({
         faceRecognit: true
