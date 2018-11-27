@@ -8,13 +8,12 @@
     <title>面部识别活体检测</title>
     <!--[if IE]><script src="https://fedcdn.open.com.cn/fedcdn/Face/html5.js"></script><![endif]-->
     <!--[if IE]><script src="https://fedcdn.open.com.cn/fedcdn/Face/excanvas.js"></script><![endif]-->
-<link href="faceDetection.css?24d34ab6fc816d542aa9" rel="stylesheet"></head>
+<link href="faceDetection.css?2c310958da81a1e0952e" rel="stylesheet"></head>
 
 <body>
     <div id="INTELLIGENT_DETECTION"></div>
-    <canvas id="canvas"></canvas>
     <img id="img" src="" style="border: 1px solid #f00;">
-<script type="text/javascript" src="faceDetection.js?24d34ab6fc816d542aa9"></script></body>
+<script type="text/javascript" src="faceDetection.js?2c310958da81a1e0952e"></script></body>
     <script type="text/javascript">
     openSDK.faceDetection({
         faceRecognit: true
@@ -38,8 +37,9 @@
         };
         //重试
         retryBtn.onclick = function() {
-            backObj.retryModel(1, function(callPic) {
-                // console.log(callPic)
+            backObj.retryModel(0, function(callPic) {
+                var img = document.getElementById('img');
+                img.setAttribute('src', callPic);
                 backObj.resultModel(false, '重试失败');
             })
         };
