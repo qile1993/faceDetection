@@ -267,7 +267,7 @@ let options = {
     mode: "callback",
     // callback | save | stream
     swffile: "https://fedcdn.open.com.cn/fedcdn/Face/jscam_canvas_only.swf",
-    quality: finalParameter.quality,
+    quality: 85,
     context: "",
     debug: function() {},
     onCapture: function() {
